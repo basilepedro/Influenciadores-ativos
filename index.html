@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amorim — Parceiros Influenciadores 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f5f3;
+    --surface: #efefed;
+    --surface-2: #e8e8e6;
+    --border: rgba(0,0,0,0.08);
+    --border-hover: rgba(0,0,0,0.16);
+    --text: #111111;
+    --text-2: #555;
+    --text-3: #999;
+    --accent: #0040e0;
+    --accent-dim: rgba(0,64,224,0.08);
+    --green: #059669;
+    --green-dim: rgba(5,150,105,0.08);
+    --amber: #d97706;
+    --amber-dim: rgba(217,119,6,0.08);
+    --red: #dc2626;
+    --red-dim: rgba(220,38,38,0.08);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    padding: 56px 64px 48px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .brand-mark {
+    width: 32px; height: 32px;
+    background: var(--accent);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; color: #fff; letter-spacing: -0.5px;
+  }
+  .brand-name {
+    font-size: 13px; font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--text-2);
+  }
+
+  .header-left h1 {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+    color: var(--text);
+  }
+  .header-left h1 span { color: var(--text-3); font-weight: 300; }
+
+  .header-stats {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+  .stat { text-align: right; }
+  .stat-num {
+    font-size: 28px; font-weight: 700; color: var(--text);
+    letter-spacing: -1px; line-height: 1;
+  }
+  .stat-label { font-size: 11px; color: var(--text-3); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ── TOOLBAR ── */
+  .toolbar {
+    padding: 16px 64px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    background: rgba(245,245,243,0.92);
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: blur(8px);
+  }
+  .toolbar-label { font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.1em; margin-right: 4px; }
+  .pill {
+    padding: 5px 14px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-2);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-weight: 400;
+  }
+  .pill:hover { border-color: var(--border-hover); color: var(--text); }
+  .pill.active { background: var(--text); color: var(--bg); border-color: var(--text); font-weight: 600; }
+
+  /* ── GRID ── */
+  .grid {
+    padding: 48px 64px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+    gap: 1px;
+    background: var(--border);
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--bg);
+    padding: 32px;
+    animation: fadeUp 0.4s ease both;
+    transition: background 0.2s;
+    position: relative;
+  }
+  .card:hover { background: var(--surface); }
+  .card.hidden { display: none; }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(12px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .card:nth-child(2){animation-delay:.04s} .card:nth-child(3){animation-delay:.08s}
+  .card:nth-child(4){animation-delay:.12s} .card:nth-child(5){animation-delay:.16s}
+  .card:nth-child(6){animation-delay:.20s} .card:nth-child(7){animation-delay:.24s}
+  .card:nth-child(8){animation-delay:.28s} .card:nth-child(9){animation-delay:.32s}
+  .card:nth-child(10){animation-delay:.36s}
+
+  /* card destaque — apenas acento sutil */
+  .card.destaque::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--accent);
+  }
+
+  /* ── CARD HEADER ── */
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
+  .influencer-name {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 3px;
+  }
+  .influencer-sub {
+    font-size: 12px;
+    color: var(--text-3);
+    font-weight: 400;
+  }
+
+  /* priority dot */
+  .priority {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .priority-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink:0; }
+  .p-alto   .priority-dot { background: var(--green); }
+  .p-medio  .priority-dot { background: var(--amber); }
+  .p-baixo  .priority-dot { background: var(--red); }
+  .p-ativo  .priority-dot { background: var(--accent); }
+  .p-alto   { color: var(--green); }
+  .p-medio  { color: var(--amber); }
+  .p-baixo  { color: var(--red); }
+  .p-ativo  { color: var(--accent); }
+
+  /* ── METRICS ROW ── */
+  .metrics {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .metric {}
+  .metric-val {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+  .metric-key { font-size: 10px; color: var(--text-3); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* leads badge inline */
+  .leads-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .leads-badge.has { color: var(--green); }
+  .leads-badge.none { color: var(--text-3); }
+  .leads-dot { width: 5px; height: 5px; border-radius: 50%; }
+  .has .leads-dot { background: var(--green); }
+  .none .leads-dot { background: var(--text-3); }
+
+  /* ── PLATFORMS ── */
+  .platforms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+  .plat-tag {
+    font-size: 11px;
+    color: var(--text-3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-weight: 400;
+  }
+
+  /* ── SECTION LABEL ── */
+  .label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-3);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  /* ── TAGS ── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .tag {
+    font-size: 11px;
+    color: var(--text-2);
+    background: var(--surface-2);
+    border-radius: 4px;
+    padding: 3px 9px;
+  }
+
+  /* ── SERVICES ── */
+  .services { margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
+  .service-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .service-row:last-child { border-bottom: none; }
+  .service-name { font-size: 13px; color: var(--text-2); font-weight: 400; }
+  .fit-dots { display: flex; gap: 3px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--surface-2); }
+  .dot.on { background: var(--text-2); }
+
+  /* ── INSIGHT BOXES ── */
+  .insight {
+    padding: 12px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 1.7;
+    margin-bottom: 14px;
+    color: var(--text-2);
+  }
+  .insight.info    { background: var(--accent-dim); border-left: 2px solid var(--accent); }
+  .insight.good    { background: var(--green-dim);  border-left: 2px solid var(--green); }
+  .insight.warn    { background: var(--amber-dim);  border-left: 2px solid var(--amber); }
+  .insight strong  { color: var(--text); font-weight: 600; }
+
+  /* ── ECOSYSTEM ── */
+  .ecosystem {
+    margin-bottom: 16px;
+    padding: 16px;
+    background: var(--surface-2);
+    border-radius: 6px;
+  }
+  .eco-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-3); margin-bottom: 12px; font-weight: 600; }
+  .eco-flow { display: flex; align-items: center; gap: 0; flex-wrap: wrap; }
+  .eco-node {
+    flex: 1; min-width: 90px;
+    padding: 8px 10px; text-align: center;
+    background: var(--surface); border-radius: 4px;
+    font-size: 10px; color: var(--text-3); line-height: 1.5;
+  }
+  .eco-node strong { display: block; font-size: 11px; color: var(--text-2); margin-bottom: 2px; font-weight: 600; }
+  .eco-node.amorim { background: var(--accent-dim); }
+  .eco-node.amorim strong { color: var(--accent); }
+  .eco-arrow { padding: 0 6px; color: var(--text-3); font-size: 12px; flex-shrink: 0; }
+
+  /* ── RECOMMENDATION ── */
+  .rec {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 4px;
+  }
+  .rec strong { color: var(--text); font-weight: 600; }
+
+  /* ── CARD FOOTER ── */
+  .card-foot {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .mats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .mat-tag {
+    font-size: 10px;
+    color: var(--text-3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .card-channel { font-size: 11px; color: var(--text-3); }
+
+  /* ── SECTION DIVIDER ── */
+  .section-sep {
+    padding: 64px 64px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .sep-line { flex: 1; height: 1px; background: var(--border); }
+  .sep-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--red);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sep-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--red); animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .section-desc {
+    padding: 16px 64px 0;
+    font-size: 13px;
+    color: var(--text-3);
+    max-width: 700px;
+    line-height: 1.7;
+  }
+  .section-desc strong { color: var(--amber); font-weight: 600; }
+
+  /* status badge */
+  .status {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .status-dot { width: 5px; height: 5px; border-radius: 50%; }
+  .sem-resp { color: var(--red); }
+  .sem-resp .status-dot { background: var(--red); }
+  .pausado { color: var(--text-3); }
+  .pausado .status-dot { background: var(--text-3); }
+
+  /* card reactivation — subtle red accent */
+  .card.reactivation::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--red);
+    opacity: 0.5;
+  }
+
+  /* ── LEGEND ── */
+  .legend {
+    padding: 48px 64px;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 40px;
+  }
+  .legend-block h3 { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-3); margin-bottom: 16px; font-weight: 600; }
+  .legend-items { display: flex; flex-direction: column; gap: 10px; }
+  .legend-item { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--text-2); }
+  .l-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    padding: 24px 64px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--text-3);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .footer-brand { display: flex; align-items: center; gap: 10px; }
+  .footer-mark {
+    width: 22px; height: 22px;
+    background: var(--accent);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .header, .toolbar, .grid, .legend, .page-footer, .section-sep, .section-desc { padding-left: 24px; padding-right: 24px; }
+    .grid { grid-template-columns: 1fr; }
+    .header { flex-direction: column; align-items: flex-start; }
+    .header-stats { flex-direction: row; }
+    .stat { text-align: left; }
+    .eco-flow { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-left">
+    <div class="brand">
+      <div class="brand-mark">A</div>
+      <span class="brand-name">Amorim Global</span>
+    </div>
+    <h1>Parceiros <span>Influenciadores</span><br>2026</h1>
+  </div>
+  <div class="header-stats">
+    <div class="stat"><div class="stat-num">17</div><div class="stat-label">Influenciadores</div></div>
+    <div class="stat"><div class="stat-num">+2M</div><div class="stat-label">Alcance total</div></div>
+    <div class="stat"><div class="stat-num">16</div><div class="stat-label">Leads gerados</div></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-label">Países</div></div>
+  </div>
+</header>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <span class="toolbar-label">Filtrar</span>
+  <button class="pill active" onclick="filterCards('all',this)">Todos</button>
+  <button class="pill" onclick="filterCards('migracao',this)">Migração</button>
+  <button class="pill" onclick="filterCards('investimento',this)">Investimento</button>
+  <button class="pill" onclick="filterCards('juridico',this)">Jurídico</button>
+  <button class="pill" onclick="filterCards('estudo',this)">Estudo</button>
+  <button class="pill" onclick="filterCards('alto',this)">Alta Prioridade</button>
+</div>
+
+<!-- GRID -->
+<main class="grid" id="grid">
+
+  <!-- 1. ELISA NA SUÍÇA -->
+  <div class="card" data-tags="migracao juridico alto">
+    <div class="card-top">
+      <div>
+        <div class="influencer-name">Elisa na Suíça</div>
+        <div class="influencer-sub">YouTube · vida real de imigrante · Suíça</div>
+      </div>
+      <div class="priority p-alto"><div class="priority-dot"></div>Alta</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">41,9k</div><div class="metric-key">Inscritos YT</div></div>
+      <div class="metric"><div class="metric-val">30–50</div><div class="metric-key">Faixa etária</div></div>
+      <div class="metric"><div class="metric-val"><span class="leads-badge none"><span class="leads-dot"></span>0 leads</span></div><div class="metric-key">Histórico</div></div>
+    </div>
+    <div class="platforms">
+      <span class="plat-tag">▶ YouTube 41,9k</span>
+      <span class="plat-tag">◉ Instagram ~5k</span>
+    </div>
+    <div class="label">Audiência</div>
+    <div class="tags">
+      <span class="tag">Brasileiros imigrantes</span><span class="tag">Famílias no exterior</span><span class="tag">Planejamento migratório</span><span class="tag">Classes A e B</span>
+    </div>
+    <div class="label">Compatibilidade</div>
+    <div class="services">
+      <div class="service-row"><span class="service-name">Regularização Migratória</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+      <div class="service-row"><span class="service-name">Planejamento Migratório</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
+      <div class="service-row"><span class="service-name">Direito Internacional Família</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div>
+    </div>
+    <div class="label">Recomendação</div>
+    <p class="rec">Ativar com conteúdo <strong>educativo-emocional</strong>: "o que ninguém te contou antes de emigrar". Formato ideal: vlog integrado com storytelling real de resolução de problema migratório.</p>
+    <div class="card-foot">
+      <div class="mats"><span class="mat-tag">Vídeo explicativo</span><span class="mat-tag">Infográfico</span></div>
+      <span class="card-channel">YouTube</span>
+    </div>
+  </div>
+
+  <!-- 2. DAITANA AGUILAR -->
+  <div class="card destaque" data-tags="migracao investimento alto">
+    <div class="card-top">
+      <div>
+        <div class="influencer-name">Daitana Aguilar</div>
+        <div class="influencer-sub">YouTube · daitana.com.br · housingmontreal.com.br · Montreal</div>
+      </div>
+      <div class="priority p-alto"><div class="priority-dot"></div>Alta</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">23,2k</div><div class="metric-key">Inscritos YT</div></div>
+      <div class="metric"><div class="metric-val">25–45</div><div class="metric-key">Faixa etária</div></div>
+      <div class="metric"><div class="metric-val"><span class="leads-badge none"><span class="leads-dot"></span>0 leads</span></div><div class="metric-key">Histórico</div></div>
+    </div>
+    <div class="platforms">
+      <span class="plat-tag">▶ YouTube 23,2k</span>
+      <span class="plat-tag">◉ Instagram ~15k</span>
+      <span class="plat-tag">⬡ daitana.com.br</span>
+      <span class="plat-tag">⬡ housingmontreal.com.br</span>
+    </div>
+    <div class="insight info">
+      <strong>Pesquisa externa:</strong> Tem dois negócios próprios estruturados — concierge de transição e curadoria de imóveis premium em Montreal. O YouTube é o funil de aquisição desses serviços.
+    </div>
+    <div class="ecosystem">
+      <div class="eco-label">Ecossistema Daitana</div>
+      <div class="eco-flow">
+        <div class="eco-node"><strong>YouTube / IG</strong>Vida no Canadá, moradia</div>
+        <div class="eco-arrow">→</div>
+        <div class="eco-node"><strong>Audiência</strong>Brasileiros indo a Montreal</div>
+        <div class="eco-arrow">→</div>
+        <div class="eco-node"><strong>Housing</strong>Imóvel, adaptação</div>
+        <div class="eco-arrow">→</div>
+        <div class="eco-node amorim"><strong>Amorim</strong>Visto, regularização</div>
+      </div>
+    </div>
+    <div class="insight good">
+      <strong>Complementaridade:</strong> Ela atua depois do visto (chegada, moradia). A Amorim atua antes — são sequenciais, não concorrentes.
+    </div>
+    <div class="insight warn">
+      <strong>Atenção:</strong> Como tem negócio próprio, a abordagem precisa ser de parceria estratégica, não publi simples.
+    </div>
+    <div class="label">Compatibilidade</div>
+    <div class="services">
+      <div class="service-row"><span class="service-name">Vistos para o Canadá</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+      <div class="service-row"><span class="service-name">Contratos de Trabalho</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
+      <div class="service-row"><span class="service-name">Regularização Pré-Mudança</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
+    </div>
+    <div class="label">Recomendação</div>
+    <p class="rec">Propor <strong>parceria de ecossistema</strong>. Narrativa ideal: <em>"Antes de contratar o housing, você precisa ter o visto certo — a Amorim resolve essa etapa."</em></p>
+    <div class="card-foot">
+      <div class="mats"><span class="mat-tag">Banner Canadá</span><span class="mat-tag">Checklist pré-visto</span><span class="mat-tag">Co-conteúdo</span></div>
+      <span class="card-channel">YouTube · Semanal</span>
+    </div>
+  </div>
+
+  <!-- 3. JENN VALDIVIA -->
+  <div class="card" data-tags="migracao juridico alto">
+    <div class="card-top">
+      <div>
+        <div class="influencer-name">Jenn Valdivia</div>
+        <div class="influencer-sub">YouTube · imigrante cubana no Brasil</div>
+      </div>
+      <div class="priority p-alto"><div class="priority-dot"></div>Alta</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">29,4k</div><div class="metric-key">Inscritos YT</div></div>
+      <div class="metric"><div class="metric-val">25–45</div><div class="metric-key">Faixa etária</div></div>
+      <div class="metric"><div class="metric-val"><span class="leads-badge none"><span class="leads-dot"></span>0 leads</span></div><div class="metric-key">Histórico</div></div>
+    </div>
+    <div class="platforms">
+      <span class="plat-tag">▶ YouTube 29,4k</span><span class="plat-tag">◉ Instagram ~10k</span>
+    </div>
+    <div class="label">Audiência</div>
+    <div class="tags">
+      <span class="tag">Estrangeiros no Brasil</span><span class="tag">América Latina</span><span class="tag">Família e maternidade</span><span class="tag">Lealdade emocional alta</span>
+    </div>
+    <div class="label">Compatibilidade</div>
+    <div class="services">
+      <div class="service-row"><span class="service-name">Imigração para o Brasil</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+      <div class="service-row"><span class="service-name">Regularização Documental</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+      <div class="service-row"><span class="service-name">Investimento no Exterior</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div>
+    </div>
+    <div class="label">Recomendação</div>
+    <p class="rec">Já possui <strong>menção direta e link ativo</strong> com 10% OFF para seguidores. Ativar formatos orgânicos integrados à narrativa pessoal. Potencial de conversão elevado pela lealdade emocional da audiência.</p>
+    <div class="card-foot">
+      <div class="mats"><span class="mat-tag">Narrativa pessoal</span><span class="mat-tag">Copy emocional</span></div>
+      <span class="card-channel">YouTube · Mensal</span>
+    </div>
+  </div>
+
+  <!-- 4. RESSACAMOTOR -->
+  <div class="card" data-tags="investimento migracao alto">
+    <div class="card-top">
+      <div>
+        <div class="influencer-name">RessacaMotor</div>
+        <div class="influencer-sub">YouTube · Matheus Pucci · Fórmula 1 · Brasil</div>
+      </div>
+      <div class="priority p-ativo"><div class="priority-dot"></div>Ativo</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">319k</div><div class="metric-key">Inscritos YT</div></div>
+      <div class="metric"><div class="metric-val">ER 9,96%</div><div class="metric-key">Engajamento</div></div>
+      <div class="metric"><div class="metric-val"><span class="leads-badge has"><span class="leads-dot"></span>Leads ativos</span></div><div class="metric-key">Histórico</div></div>
+    </div>
+    <div class="platforms">
+      <span class="plat-tag">▶ YouTube 319k</span><span class="plat-tag">◉ Instagram ~27k</span>
+    </div>
+    <div class="label">Audiência</div>
+    <div class="tags">
+      <span class="tag">Classe A e B</span><span class="tag">~80% masculino</span><span class="tag">GPs internacionais</span><span class="tag">Renda elevada</span>
+    </div>
+    <div class="label">Compatibilidade</div>
+    <div class="services">
+      <div class="service-row"><span class="service-name">Vistos para EUA e Europa</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+      <div class="service-row"><span class="service-name">Mobilidade Internacional</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+      <div class="service-row"><span class="service-name">Investimento no Exterior</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
+    </div>
+    <div class="label">Recomendação</div>
+    <p class="rec">Parceria já validada. <strong>Prioridade máxima</strong> para envio de infográficos sobre vistos para GPs (Miami, Vegas, Monaco, Silverstone). Explorar novos formatos em 2026.</p>
+    <div class="card-foot">
+      <div class="mats"><span class="mat-tag">Infográfico F1+Vistos</span><span class="mat-tag">Banner GP</span></div>
+      <span class="card-channel">YouTube · 39k views/vídeo</span>
+    </div>
+  </div>
+
+  <!-- 5. GIU LOPEZ -->
+  <div class="card" data-tags="migracao juridico medio">
+    <div class="card-top">
+      <div>
+        <div class="influencer-name">Giu Lopez</div>
+        <div class="influencer-sub">YouTube · estrangeiro em Florianópolis</div>
+      </div>
+      <div class="priority p-medio"><div class="priority-dot"></div>Médio</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">29,7k</div><div class="metric-key">Inscritos YT</div></div>
+      <div class="metric"><div class="metric-val">28–50</div><div class="metric-key">Faixa etária</div></div>
+      <div class="metric"><div class="metric-val"><span class="leads-badge has"><span class="leads-dot"></span>4 leads</span></div><div class="metric-key">Histórico</div></div>
+    </div>
+    <div class="platforms">
+      <span class="plat-tag">▶ YouTube 29,7k</span><span class="plat-tag">◉ Instagram ~8k</span>
+    </div>
+    <div class="label">Audiência</div>
+    <div class="tags">
+      <span class="tag">Argentinos e latinos</span><span class="tag">Estrangeiros no Brasil</span><span class="tag">Turismo → mudança</span>
+    </div>
+    <div class="label">Compatibilidade</div>
+    <div class="services">
+      <div class="service-row"><span class="service-name">Imigração para o Brasil</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
+      <div class="service-row"><span class="service-name">Regularização (CPF, CNPJ)</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="service-row"><span class="service-name">Consultoria Pré-Mudança</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div>
+    </div>
+    <div class="label">Recomendação</div>
+    <p class="rec">Canal forte de <strong>topo de funil</strong> para público latino. Materiais em espanhol são essenciais. Formato: "quando você precisa de ajuda especializada no Brasil".</p>
+    <div class="card-foot">
+      <div class="mats"><span class="mat-tag">Conteúdo em espanhol</span><span class="mat-tag">Guia prático</span></div>
+      <span class="card-channel">YouTube · Semanal</span>
+    </div>
+  </div>
+
+  <!-- 6. JENNIFER BLINKY -->
+  <div class="card" data-tags="estudo migracao alto">
+    <div class="card-top">
+      <div>
+        <div class="influencer-name">Jennifer Blinky</div>
+        <div class="influencer-sub">YouTube + Instagram · blinkyempire.com · China</div>
+      </div>
+      <div class="priority p-alto"><div class="priority-dot"></div>Alta</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">14,5k</div><div class="metric-key">Inscritos YT</div></div>
+      <div class="metric"><div class="metric-val">18–30</div><div class="metric-key">Faixa etária</div></div>
+      <div class="metric"><div class="metric-val"><span class="leads-badge has"><span class="leads-dot"></span>6 leads</span></div><div class="metric-key">Histórico</div></div>
+    </div>
+    <div class="platforms">
+      <span class="plat-tag">▶ YouTube 14,5k</span><span class="plat-tag">◉ Instagram ~20k</span><span class="plat-tag">⬡ blinkyempire.com</span>
+    </div>
+    <div class="insight info">
+      <strong>Negócio próprio:</strong> Cobra por assessoria informal para africanos que querem estudar no Brasil. A Amorim deve ser a camada jurídica e formal que falta — parceria de ecossistema, não publi.
+    </div>
+    <div class="label">Audiência</div>
+    <div class="tags">
+      <span class="tag">Nigerianos e africanos</span><span class="tag">Estudo no Brasil</span><span class="tag">PEC-G / Graduação</span>
+    </div>
+    <div class="label">Compatibilidade</div>
+    <div class="services">
+      <div class="service-row"><span class="service-name">Visto de Estudante para o Brasil</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+      <div class="service-row"><span class="service-name">Regularização Migratória</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
+      <div class="service-row"><span class="service-name">Consultoria Internacional (Inglês)</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
+    </div>
+    <div class="label">Recomendação</div>
+    <p class="rec">Demanda real e orgânica altíssima. Priorizar materiais em <strong>inglês</strong>. A Amorim como ponte institucional — dando segurança jurídica a processos hoje informais.</p>
+    <div class="card-foot">
+      <div class="mats"><span class="mat-tag">FAQ em inglês</span><span class="mat-tag">Visual estudantil</span></div>
+      <span class="card-channel">YouTube + Instagram</span>
+    </div>
+  </div>
+
+  <!-- 7. JOSE BELQUIOR -->
+  <div class="card" data-tags="estudo juridico baixo">
+    <div class="card-top">
+      <div>
+        <div class="influencer-name">José Belquior</div>
+        <div class="influencer-sub">YouTube · Bolsas e Estudo · Brasil → Europa</div>
+      </div>
+      <div class="priority p-baixo"><div class="priority-dot"></div>Baixo</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">12,2k</div><div class="metric-key">Inscritos YT</div></div>
+      <div class="metric"><div class="metric-val">18–35</div><div class="metric-key">Faixa etária</div></div>
+      <div class="metric"><div class="metric-val"><span class="leads-badge none"><span class="leads-dot"></span>0 leads</span></div><div class="metric-key">Histórico</div></div>
+    </div>
+    <div class="platforms"><span class="plat-tag">▶ YouTube 12,2k</span></div>
+    <div class="label">Audiência</div>
+    <div class="tags">
+      <span class="tag">Pesquisadores acadêmicos</span><span class="tag">Pós-graduação</span><span class="tag">Foco em bolsas gratuitas</span>
+    </div>
+    <div class="label">Compatibilidade</div>
+    <div class="services">
+      <div class="service-row"><span class="service-name">Visto de Estudante / Pesquisador</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="service-row"><span class="service-name">Regularização na Europa</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
+    </div>
+    <div class="label">Recomendação</div>
+    <p class="rec">Alcance muito baixo e público orientado a <strong>bolsas gratuitas</strong>. Usar apenas como apoio institucional de topo de funil — conteúdo de autoridade sem expectativa de conversão imediata.</p>
+    <div class="card-foot">
+      <div class="mats"><span class="mat-tag">FAQ colaborativo</span></div>
+      <span class="card-channel">YouTube · Alcance limitado</span>
+    </div>
+  </div>
+
+  <!-- 8. KATYA PYANOVA -->
+  <div class="card" data-tags="migracao medio">
+    <div class="card-top">
+      <div>
+        <div class="influencer-name">Katya Pyanova</div>
+        <div class="influencer-sub">YouTube · cultura russa para brasileiros · Moscou</div>
+      </div>
+      <div class="priority p-medio"><div class="priority-dot"></div>Médio</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">163k</div><div class="metric-key">Inscritos YT</div></div>
+      <div class="metric"><div class="metric-val">~1M</div><div class="metric-key">Alcance real</div></div>
+      <div class="metric"><div class="metric-val"><span class="leads-badge none"><span class="leads-dot"></span>0 leads</span></div><div class="metric-key">Histórico</div></div>
+    </div>
+    <div class="platforms">
+      <span class="plat-tag">▶ YouTube 163k</span><span class="plat-tag">◉ Instagram 640k</span><span class="plat-tag">♪ TikTok ~200k</span>
+    </div>
+    <div class="insight info">
+      <strong>Alcance subestimado:</strong> Instagram tem 640k e TikTok ~200k. Alcance real próximo de 1 milhão. Ativar prioritariamente pelo Instagram.
+    </div>
+    <div class="label">Compatibilidade</div>
+    <div class="services">
+      <div class="service-row"><span class="service-name">Mobilidade Internacional</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="service-row"><span class="service-name">Vida no Exterior — Awareness</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div>
+    </div>
+    <div class="label">Recomendação</div>
+    <p class="rec">Grande base e <strong>demanda reprimida</strong>. Ideal para awareness. Ativar <strong>mid-2026</strong> conforme interesse da influenciadora.</p>
+    <div class="card-foot">
+      <div class="mats"><span class="mat-tag">Vlog integrado</span><span class="mat-tag">Storytelling</span></div>
+      <span class="card-channel">YouTube · Ativação: mid-2026</span>
+    </div>
+  </div>
+
+  <!-- 9. KIKI A GRINGA -->
+  <div class="card" data-tags="migracao medio">
+    <div class="card-top">
+      <div>
+        <div class="influencer-name">Kiki a Gringa</div>
+        <div class="influencer-sub">YouTube · canadense no Brasil · Brasil / Canadá</div>
+      </div>
+      <div class="priority p-medio"><div class="priority-dot"></div>Médio</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">64,6k</div><div class="metric-key">Inscritos YT</div></div>
+      <div class="metric"><div class="metric-val">282k</div><div class="metric-key">Instagram</div></div>
+      <div class="metric"><div class="metric-val"><span class="leads-badge has"><span class="leads-dot"></span>6 leads</span></div><div class="metric-key">Histórico</div></div>
+    </div>
+    <div class="platforms">
+      <span class="plat-tag">▶ YouTube 64,6k</span><span class="plat-tag">◉ Instagram 282k</span>
+    </div>
+    <div class="label">Audiência</div>
+    <div class="tags">
+      <span class="tag">Gen Z + Millennials</span><span class="tag">Brasil × Canadá</span><span class="tag">Baixa resistência comercial</span>
+    </div>
+    <div class="label">Compatibilidade</div>
+    <div class="services">
+      <div class="service-row"><span class="service-name">Vistos para o Brasil</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
+      <div class="service-row"><span class="service-name">Awareness "Morar Fora"</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
+    </div>
+    <div class="label">Recomendação</div>
+    <p class="rec">Alto potencial de <strong>branding e humanização</strong>. Público trata a Kiki como amiga — transferência de confiança muito alta. Plataforma principal a considerar: Instagram (282k).</p>
+    <div class="card-foot">
+      <div class="mats"><span class="mat-tag">Vídeo patrocinado</span><span class="mat-tag">Storytelling</span></div>
+      <span class="card-channel">YouTube + Instagram</span>
+    </div>
+  </div>
+
+  <!-- 10. RDV NA FRANCA -->
+  <div class="card" data-tags="migracao juridico investimento medio">
+    <div class="card-top">
+      <div>
+        <div class="influencer-name">RDV na França</div>
+        <div class="influencer-sub">YouTube · Juliana e Mauro · França</div>
+      </div>
+      <div class="priority p-medio"><div class="priority-dot"></div>Médio</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">8,2k</div><div class="metric-key">Inscritos YT</div></div>
+      <div class="metric"><div class="metric-val">28–45</div><div class="metric-key">Faixa etária</div></div>
+      <div class="metric"><div class="metric-val"><span class="leads-badge none"><span class="leads-dot"></span>Aguardando</span></div><div class="metric-key">Histórico</div></div>
+    </div>
+    <div class="platforms">
+      <span class="plat-tag">▶ YouTube 8,2k</span><span class="plat-tag">◉ Instagram ~3k</span>
+    </div>
+    <div class="label">Audiência</div>
+    <div class="tags">
+      <span class="tag">Casa própria na França</span><span class="tag">Brasileiros na França</span><span class="tag">Estabilidade patrimonial</span>
+    </div>
+    <div class="label">Compatibilidade</div>
+    <div class="services">
+      <div class="service-row"><span class="service-name">Vistos e Imigração para a França</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+      <div class="service-row"><span class="service-name">Nacionalidade Francesa</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
+      <div class="service-row"><span class="service-name">Planejamento Patrimonial</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div>
+    </div>
+    <div class="label">Recomendação</div>
+    <p class="rec">Autoridade consolidada em migração para a França. Condição para continuar: <strong>relatórios claros de conversões</strong>. Ativar conteúdo sobre burocracia migratória integrado à narrativa real do canal.</p>
+    <div class="card-foot">
+      <div class="mats"><span class="mat-tag">Infográfico França</span><span class="mat-tag">Relatório conversão</span></div>
+      <span class="card-channel">YouTube · Quinzenal</span>
+    </div>
+  </div>
+
+</main>
+
+<!-- REACTIVATION SECTION -->
+<div class="section-sep">
+  <div class="sep-line"></div>
+  <div class="sep-label"><div class="sep-dot"></div>Influenciadores em Reativação</div>
+  <div class="sep-line"></div>
+</div>
+<p class="section-desc">
+  Cadastrados como <strong>parceiros ativos</strong>, mas sem resposta ao contato de atualização de status. A análise orienta a abordagem de reativação por ordem de prioridade.
+</p>
+
+<div class="grid" style="padding-top: 0; margin-top: 48px;">
+
+  <!-- A1. APURE GURIA -->
+  <div class="card reactivation" data-tags="migracao juridico alto">
+    <div class="card-top">
+      <div>
+        <div class="influencer-name">Apure Guria!</div>
+        <div class="influencer-sub">YouTube · Angela/Angie · finanças e vida no exterior · Inglaterra</div>
+      </div>
+      <div class="priority p-alto"><div class="priority-dot"></div>Reativar primeiro</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">400k</div><div class="metric-key">Inscritos YT</div></div>
+      <div class="metric"><div class="metric-val">ER 13,38%</div><div class="metric-key">Engajamento 🔥</div></div>
+      <div class="metric"><div class="metric-val"><span class="leads-badge none"><span class="leads-dot"></span>0 leads</span></div><div class="metric-key">Histórico</div></div>
+    </div>
+    <div class="platforms">
+      <span class="plat-tag">▶ YouTube 400k</span><span class="plat-tag">◉ Instagram ~80k</span><span class="plat-tag">✎ Blog</span>
+    </div>
+    <div class="insight good">
+      <strong>Já citou a Amorim</strong> no vídeo "COMETI ESTES 5 ERROS MORANDO FORA". ER de 13,38% — melhor que 98% dos canais do mesmo tamanho.
+    </div>
+    <div class="label">Audiência</div>
+    <div class="tags">
+      <span class="tag">Brasileiros no exterior</span><span class="tag">Finanças internacionais</span><span class="tag">7,8k views/vídeo</span>
+    </div>
+    <div class="label">Compatibilidade</div>
+    <div class="services">
+      <div class="service-row"><span class="service-name">Vistos e Regularização Europa</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+      <div class="service-row"><span class="service-name">Planejamento Pré-Mudança</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
+    </div>
+    <div class="label">Abordagem</div>
+    <p class="rec">Maior canal da lista. <strong>Prioridade máxima.</strong> Relacionamento já existe — só precisa ser formalizado. Abordar com conteúdo sobre erros migratórios, formato que ela usa com sucesso.</p>
+    <div class="card-foot">
+      <div class="mats"><span class="mat-tag">Conteúdo educativo</span><span class="mat-tag">Erros migratórios</span></div>
+      <div class="status sem-resp"><div class="status-dot"></div>Sem resposta</div>
+    </div>
+  </div>
+
+  <!-- A2. JUNIOR LIMA -->
+  <div class="card reactivation" data-tags="migracao investimento alto">
+    <div class="card-top">
+      <div>
+        <div class="influencer-name">Junior Lima</div>
+        <div class="influencer-sub">YouTube · imigração Canadá e América Latina</div>
+      </div>
+      <div class="priority p-alto"><div class="priority-dot"></div>Reativar primeiro</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">3–5k</div><div class="metric-key">Views/vídeo</div></div>
+      <div class="metric"><div class="metric-val">24–42</div><div class="metric-key">Faixa etária</div></div>
+      <div class="metric"><div class="metric-val"><span class="leads-badge none"><span class="leads-dot"></span>0 leads</span></div><div class="metric-key">Histórico</div></div>
+    </div>
+    <div class="platforms">
+      <span class="plat-tag">▶ YouTube</span><span class="plat-tag">◉ Instagram ~5k</span>
+    </div>
+    <div class="insight good">
+      <strong>Canal ativo semanalmente.</strong> Público em decisão migratória fazendo perguntas que entram exatamente no território da Amorim — validação de diploma, contratos, rota legal.
+    </div>
+    <div class="label">Compatibilidade</div>
+    <div class="services">
+      <div class="service-row"><span class="service-name">Plano Canadá / Vistos</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+      <div class="service-row"><span class="service-name">Validação de Diplomas</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
+    </div>
+    <div class="label">Abordagem</div>
+    <p class="rec">Tom direto e opinativo — <strong>não abordar com publi genérica.</strong> Propor série educativa co-criada: "Perguntas do canal respondidas pela Amorim".</p>
+    <div class="card-foot">
+      <div class="mats"><span class="mat-tag">Série educativa</span><span class="mat-tag">FAQ Plano Canadá</span></div>
+      <div class="status sem-resp"><div class="status-dot"></div>Sem resposta</div>
+    </div>
+  </div>
+
+  <!-- A3. MARCELA MESQUITA -->
+  <div class="card reactivation" data-tags="migracao juridico alto">
+    <div class="card-top">
+      <div>
+        <div class="influencer-name">Marcela Mesquita</div>
+        <div class="influencer-sub">YouTube · brasileiros na Espanha · Tenerife</div>
+      </div>
+      <div class="priority p-alto"><div class="priority-dot"></div>Reativar primeiro</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">25+</div><div class="metric-key">Vídeos</div></div>
+      <div class="metric"><div class="metric-val">25–45</div><div class="metric-key">Faixa etária</div></div>
+      <div class="metric"><div class="metric-val"><span class="leads-badge none"><span class="leads-dot"></span>Aguardando</span></div><div class="metric-key">Histórico</div></div>
+    </div>
+    <div class="platforms">
+      <span class="plat-tag">▶ YouTube</span><span class="plat-tag">◉ Instagram ~3k</span>
+    </div>
+    <div class="insight good">
+      <strong>Público em fundo de funil.</strong> Comentários com perguntas técnicas sobre regularização e contratos. Vídeo sobre regularização massiva ainda gerando dúvidas 2 semanas depois.
+    </div>
+    <div class="label">Compatibilidade</div>
+    <div class="services">
+      <div class="service-row"><span class="service-name">Regularização na Espanha</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+      <div class="service-row"><span class="service-name">Vistos Europa</span><div class="fit-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
+    </div>
+    <div class="label">Abordagem</div>
+    <p class="rec">Público com <strong>necessidade imediata</strong> de regularização. Abordar com material específico sobre Espanha — regularização massiva e NIE.</p>
+    <div class="card-foot">
+      <div class="mats"><span class="mat-tag">Guia regularização Espanha</span><span class="mat-tag">Infográfico NIE</span></div>
+      <div class="status sem-resp"><div class="status-dot"></div>Sem resposta</div>
+    </div>
+  </div>
+
+  <!-- A4. CASAL MOCHILEIRO -->
+  <div class="card reactivation" data-tags="migracao medio">
+    <div class="card-top">
+      <div>
+        <div class="influencer-name">Casal Mochileiro</div>
+        <div class="influencer-sub">YouTube · nomadismo digital · EUA / Europa</div>
+      </div>
+      <div class="priority p-medio"><div class="priority-dot"></div>Com estratégia</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">7,28k</div><div class="metric-key">Inscritos YT</div></div>
+      <div class="metric"><div class="metric-val">22–38</div><div class="metric-key">Faixa etária</div></div>
+      <div class="metric"><div class="metric-val"><span class="leads-badge none"><span class="leads-dot"></span>0 leads</span></div><div class="metric-key">Histórico</div></div>
+    </div>
+    <div class="platforms"><span class="plat-tag">▶ YouTube 7,28k</span><span class="plat-tag">◉ Instagram ~2k</span></div>
+    <div class="insight warn">
+      <strong>Atenção ao posicionamento:</strong> Público busca caminhos de baixo custo. Pode ver assessoria jurídica como gasto desnecessário. Posicionar a Amorim como investimento em segurança.
+    </div>
+    <div class="label">Abordagem</div>
+    <p class="rec">Linguagem direta e sem romantismo: <strong>"o custo de errar é maior do que o custo de se assessorar"</strong>. Alinhada ao tom do canal.</p>
+    <div class="card-foot">
+      <div class="mats"><span class="mat-tag">Conteúdo "custo do erro"</span><span class="mat-tag">Checklist</span></div>
+      <div class="status sem-resp"><div class="status-dot"></div>Sem resposta</div>
+    </div>
+  </div>
+
+  <!-- A5. NATY FERNANDES -->
+  <div class="card reactivation" data-tags="estudo migracao baixo">
+    <div class="card-top">
+      <div>
+        <div class="influencer-name">Naty Fernandes</div>
+        <div class="influencer-sub">YouTube · estudos e imigração Canadá · Toronto</div>
+      </div>
+      <div class="priority p-baixo"><div class="priority-dot"></div>Baixo</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">18,9k</div><div class="metric-key">Inscritos YT</div></div>
+      <div class="metric"><div class="metric-val">100–300</div><div class="metric-key">Views recentes</div></div>
+      <div class="metric"><div class="metric-val"><span class="leads-badge none"><span class="leads-dot"></span>0 leads</span></div><div class="metric-key">Histórico</div></div>
+    </div>
+    <div class="platforms"><span class="plat-tag">▶ YouTube 18,9k</span></div>
+    <div class="insight warn">
+      <strong>Canal pausado há 6 meses.</strong> Engajamento muito baixo. Possível conflito de interesse com consultoria educacional própria.
+    </div>
+    <div class="label">Abordagem</div>
+    <p class="rec">Aguardar <strong>retomada consistente</strong> antes de investir em material. Contato leve para verificar planos de retorno.</p>
+    <div class="card-foot">
+      <div class="mats"><span class="mat-tag">Aguardar retomada</span></div>
+      <div class="status pausado"><div class="status-dot"></div>Canal pausado</div>
+    </div>
+  </div>
+
+  <!-- A6. BERNARDO SILVINO -->
+  <div class="card reactivation" data-tags="estudo medio">
+    <div class="card-top">
+      <div>
+        <div class="influencer-name">Bernardo Silvino</div>
+        <div class="influencer-sub">YouTube · Angopolyglot · idiomas e mobilidade · Luanda</div>
+      </div>
+      <div class="priority p-medio"><div class="priority-dot"></div>Com estratégia</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">17,8k</div><div class="metric-key">Inscritos YT</div></div>
+      <div class="metric"><div class="metric-val">Ativo</div><div class="metric-key">Frequência</div></div>
+      <div class="metric"><div class="metric-val"><span class="leads-badge none"><span class="leads-dot"></span>0 leads</span></div><div class="metric-key">Histórico</div></div>
+    </div>
+    <div class="platforms"><span class="plat-tag">▶ YouTube 17,8k</span><span class="plat-tag">◎ Podcast 40–90min</span></div>
+    <div class="insight info">
+      Canal angolano ativo com podcasts longos e comunidade engajada. Público usa idiomas como estratégia de ascensão social. <strong>CPLP como vetor de alcance.</strong>
+    </div>
+    <div class="label">Abordagem</div>
+    <p class="rec">Participação em podcast ou live — formato que ele domina. Sinergia com Jennifer Blinky (mesmo público africano). Foco em <strong>construção de autoridade</strong> antes de conversão.</p>
+    <div class="card-foot">
+      <div class="mats"><span class="mat-tag">Podcast</span><span class="mat-tag">Conteúdo CPLP</span></div>
+      <div class="status sem-resp"><div class="status-dot"></div>Sem resposta</div>
+    </div>
+  </div>
+
+  <!-- A7. ANA LAURA GIRARDI -->
+  <div class="card reactivation" data-tags="estudo juridico baixo">
+    <div class="card-top">
+      <div>
+        <div class="influencer-name">Ana Laura Girardi</div>
+        <div class="influencer-sub">YouTube · vida acadêmica no exterior · Portugal / Itália</div>
+      </div>
+      <div class="priority p-baixo"><div class="priority-dot"></div>Baixo</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">17,5k</div><div class="metric-key">Inscritos YT</div></div>
+      <div class="metric"><div class="metric-val">500–900</div><div class="metric-key">Views recentes</div></div>
+      <div class="metric"><div class="metric-val"><span class="leads-badge none"><span class="leads-dot"></span>0 leads</span></div><div class="metric-key">Histórico</div></div>
+    </div>
+    <div class="platforms"><span class="plat-tag">▶ YouTube 17,5k</span></div>
+    <div class="insight warn">
+      <strong>Inativa há 5 meses.</strong> Performance caiu de 18k para ~700 views/vídeo. Sem foco em conversão. Não priorizar no momento.
+    </div>
+    <div class="label">Abordagem</div>
+    <p class="rec">Aguardar sinal de retomada. <strong>Não investir em produção de material</strong> enquanto inativa — ROI muito baixo.</p>
+    <div class="card-foot">
+      <div class="mats"><span class="mat-tag">Aguardar retomada</span></div>
+      <div class="status pausado"><div class="status-dot"></div>Canal inativo</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- LEGEND -->
+<section class="legend">
+  <div class="legend-block">
+    <h3>Prioridade de Ativação</h3>
+    <div class="legend-items">
+      <div class="legend-item"><div class="l-dot" style="background:var(--green)"></div>Alta — ativação imediata recomendada</div>
+      <div class="legend-item"><div class="l-dot" style="background:var(--amber)"></div>Média — ativar com estratégia definida</div>
+      <div class="legend-item"><div class="l-dot" style="background:var(--red)"></div>Baixa — apoio de conteúdo apenas</div>
+      <div class="legend-item"><div class="l-dot" style="background:var(--accent)"></div>Ativo — parceria em andamento</div>
+    </div>
+  </div>
+  <div class="legend-block">
+    <h3>Fit de Serviço</h3>
+    <div class="legend-items">
+      <div class="legend-item"><div class="l-dot" style="background:var(--text)"></div>●●●●● Fit perfeito — conversão direta</div>
+      <div class="legend-item"><div class="l-dot" style="background:var(--text-2)"></div>●●●● — Bom alinhamento, meio de funil</div>
+      <div class="legend-item"><div class="l-dot" style="background:var(--text-3)"></div>●●● — Awareness e topo de funil</div>
+    </div>
+  </div>
+  <div class="legend-block">
+    <h3>Ações Imediatas</h3>
+    <div class="legend-items">
+      <div class="legend-item"><div class="l-dot" style="background:var(--red)"></div>Parceria de ecossistema com Daitana</div>
+      <div class="legend-item"><div class="l-dot" style="background:var(--amber)"></div>Infográficos por destino (França, Canadá, EUA)</div>
+      <div class="legend-item"><div class="l-dot" style="background:var(--green)"></div>Materiais em inglês e espanhol</div>
+      <div class="legend-item"><div class="l-dot" style="background:var(--accent)"></div>Relatórios de conversão por influenciador</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div class="footer-brand">
+    <div class="footer-mark">A</div>
+    <span>Amorim Global · Programa de Parceiros Influenciadores</span>
+  </div>
+  <span>Uso interno · Equipe de Parcerias · Fevereiro 2026</span>
+</footer>
+
+<script>
+  function filterCards(tag, btn) {
+    document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.card').forEach(card => {
+      if (tag === 'all') { card.classList.remove('hidden'); return; }
+      card.classList.toggle('hidden', !card.dataset.tags.includes(tag));
+    });
+  }
+</script>
+</body>
+</html>
